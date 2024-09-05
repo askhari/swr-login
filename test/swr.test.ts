@@ -52,7 +52,8 @@ describe('test swr create secret', () => {
         const input = {
             accessKey: '1234567890&*',
             secretKey: '123456789012345678901234567890',
-            region: 'cn-north-4'
+            region: 'cn-north-4',
+            location: 'myhuaweicloud.com'
         };
         expect(await swr.createSecret(input)).toBe(
             '{"auths":{"swr.cn-north-4.myhuaweicloud.com":{"auth":"auth"}}}'
@@ -74,7 +75,8 @@ describe('test swr create secret', () => {
         const input = {
             accessKey: '1234567890&*',
             secretKey: '123456789012345678901234567890',
-            region: 'cn-north-4'
+            region: 'cn-north-4',
+            location: 'myhuaweicloud.com'
         };
         await swr.createSecret(input);
         expect(core.setFailed).toHaveBeenCalledTimes(1);
@@ -87,7 +89,8 @@ describe('test swr create secret', () => {
         const input = {
             accessKey: '123456789012',
             secretKey: '123456789012345678901234567890',
-            region: 'cn-north-4'
+            region: 'cn-north-4',
+            location: 'myhuaweicloud.com'
         };
         await expect(swr.createSecret(input)).rejects.toThrow('Get SWR Secret Failed.');
     });

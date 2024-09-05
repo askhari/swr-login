@@ -5,7 +5,8 @@ import * as context from './context';
 const ACCESS_KEY_REG = RegExp(/^[a-zA-Z0-9]{10,30}$/);
 const SECRET_KEY_REG = RegExp(/^[a-zA-Z0-9]{30,50}$/);
 
-const REGION_REG = RegExp(/^[a-zA-Z0-9]{1,5}-[a-zA-Z0-9]+-[1-9]$/);
+const REGION_REG = RegExp(/^[a-zA-Z0-9]{1,5}-[a-zA-Z0-9]+-[0-9]{1,3}$/);
+const LOCATION_REG = RegExp(/myhuaweicloud.com$|myhuaweicloud.eu$/);
 
 /**
  * 检查每个inputs 属性value是否合法
@@ -19,6 +20,11 @@ export function checkInputs(inputs: context.Inputs): boolean {
     }
     if (!checkRegion(inputs.region)) {
         core.info('region is not correct.');
+        return false;
+    }
+
+    if (!checkLocation(inputs.location)) {
+        core.info('location is not correct.');
         return false;
     }
 
@@ -40,4 +46,12 @@ export function checkAkSk(accessKey: string, secretKey: string): boolean {
  */
 export function checkRegion(region: string): boolean {
     return REGION_REG.test(region);
+}
+
+/**
+ * Huawei Cloud Location
+ * @returns
+ */
+export function checkLocation(location: string): boolean {
+    return LOCATION_REG.test(location);
 }

@@ -66,6 +66,21 @@ describe('test whether the region parameter is valid', () => {
     });
 });
 
+describe('test whether the location parameter is valid', () => {
+    const testCase = [
+        {location: 'myhuaweicloud.com', result: true},
+        {location: 'myhuaweicloud.eu', result: true},
+        {location: 'cnnorth1', result: false},
+        {location: 'dsdasa', result: false}
+    ];
+    testCase.forEach(item => {
+        const {location, result} = item;
+        test(`location(${location})，返回值为${result}`, () => {
+            expect(utils.checkLocation(location)).toBe(result);
+        });
+    });
+});
+
 describe('test whether check Inputs is valid', () => {
     const testCase = [
         {
@@ -73,7 +88,8 @@ describe('test whether check Inputs is valid', () => {
             input: {
                 accessKey: '1234567890',
                 secretKey: '123456789012345678901234567890',
-                region: 'cn-north-4'
+                region: 'cn-north-4',
+                location: 'myhuaweicloud.com'
             },
             result: true
         },
@@ -82,7 +98,8 @@ describe('test whether check Inputs is valid', () => {
             input: {
                 accessKey: '1234567890&*',
                 secretKey: '123456789012345678901234567890',
-                region: 'cn-north-4'
+                region: 'cn-north-4',
+                location: 'myhuaweicloud.com'
             },
             result: false
         },
@@ -91,7 +108,8 @@ describe('test whether check Inputs is valid', () => {
             input: {
                 accessKey: '1234567890',
                 secretKey: '123456789012345678901234567890',
-                region: 'cndddd'
+                region: 'cndddd',
+                location: 'myhuaweicloud.com'
             },
             result: false
         },
@@ -100,7 +118,8 @@ describe('test whether check Inputs is valid', () => {
             input: {
                 accessKey: '1234567890&*',
                 secretKey: '123456789012345678901234567890',
-                region: 'cn-north4'
+                region: 'cn-north4',
+                location: 'myhuaweicloud.com'
             },
             result: false
         }

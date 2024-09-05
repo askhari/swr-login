@@ -10,9 +10,13 @@ inputs:
   region:
     description: 'Region'
     required: true
+  location:
+    description: 'Huawei Cloud location'
+    required: false
+    default: 'myhuaweicloud.com'
 branding:
   icon: 'cloud'
   color: 'red'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'

@@ -19,6 +19,7 @@
     access-key-id: ${{ secrets.ACCESSKEY }} 
     access-key-secret: ${{ secrets.SECRETACCESSKEY }}
     region: '<region id>'  # example: cn-north-4
+    location: '<Huawei Cloud location>' # examples: 
 ```
 详情可参考 [swr-login-workflow-samples](https://github.com/huaweicloud/swr-login-workflow-samples)
 

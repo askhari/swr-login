@@ -4,3 +4,11 @@ coverage/
 .vscode/
 HuaweiCloud-SDK-Access.*
 lib/
+
+# DevBox
+devbox.*
+.devbox
+
+# Direnv
+.envrc
+
